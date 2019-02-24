@@ -7,6 +7,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lab6FileIO", "Lab6FileIO\La
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F57ED2C8-BE4B-4DC5-9ADE-E395698BAF27}"
 	ProjectSection(SolutionItems) = preProject
+		File9.csv = File9.csv
 		lego1.csv = lego1.csv
 	EndProjectSection
 EndProject

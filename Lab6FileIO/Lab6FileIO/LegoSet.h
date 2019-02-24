@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+using namespace std;
 struct LegoSet {
 	int number;
 	string theme;

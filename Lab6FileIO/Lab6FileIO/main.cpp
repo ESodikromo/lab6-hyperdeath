@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <fstream>
 #include <vector>
+#include <stdlib.h>
 #include "LegoSet.h"
 using namespace std;
 
@@ -15,6 +16,7 @@ void averageCount(vector<LegoSet> *v);
 void averagePrice(vector<LegoSet> *v);
 void avgNMostMini(vector<LegoSet> *v);
 void allSum(vector<LegoSet> *v);
+void printAllData(LegoSet L);
 
 
 int main()
@@ -85,15 +87,41 @@ vector<LegoSet> *fileSelect(int choice)
 	vector<LegoSet> *result = new vector<LegoSet>;
 	if (choice != 4) {
 		string opt = "File" + std::to_string(choice) + ".csv";
-		inFS.open(opt, ios::in);
-		string z;
-		inFS >> z;
-		while (!inFS.eof) {
+		inFS.open(opt);
+		cout << inFS.goodbit;
+		cout << inFS.is_open();
+		cout << opt;
+		//string z;
+		//inFS >> z;
+		while (!(inFS.eof())) {
 			string line;
+			
+			string s_number;
+			string theme;
+			string name;
+			string s_minifigs;
+			string s_pieces;
+			string s_price;
+			int number;
+			int minifigs;
+			int pieces;
+			double price;
+
+			getline(inFS, s_number, ',');
+			//cout << "hello"<<  s_number << endl;
+			getline(inFS, theme, ',');
+			getline(inFS, name, ',');
+			getline(inFS, s_minifigs, ',');
+			getline(inFS, s_pieces, ',');
+			getline(inFS, s_price, ',');
+
+			number = stoi(s_number);
+			minifigs = stoi(s_minifigs);
+			pieces = stoi(s_pieces);
+			price = stoi(s_pieces);
+			/*
 			size_t caret = 0;
 			size_t caret2 = 0;
-			inFS >> line;
-
 			caret2 = line.find_first_of(',', caret);
 			int number = stoi(line.substr(0, caret2));
 			caret = caret2 + 1;
@@ -110,8 +138,9 @@ vector<LegoSet> *fileSelect(int choice)
 			caret = line.find_first_of(',', caret+1);
 			int pieces;
 			double price;
-
+			*/
 			result->push_back(LegoSet(number, theme, name, minifigs, pieces, price));
+	
 		}
 	}
 	return result;
@@ -119,6 +148,7 @@ vector<LegoSet> *fileSelect(int choice)
 
 void expensive(vector<LegoSet> *v)
 {
+	printAllData((*v)[0]);
 }
 
 void largePieceSet(vector<LegoSet> *v)
@@ -148,3 +178,13 @@ void avgNMostMini(vector<LegoSet> *v)
 void allSum(vector<LegoSet> *v)
 {
 }
+
+void printAllData(LegoSet L) {
+	cout << "Name: " << L.name << endl;
+	cout << "Number: " << L.number << endl;
+	cout << "Theme: " << L.theme << endl;
+	cout << "Price: " << L.price << endl;
+	cout << "Minifigures: " << L.minifigs << endl;
+	cout << "Piece count: " << L.pieces << endl;
+}
+

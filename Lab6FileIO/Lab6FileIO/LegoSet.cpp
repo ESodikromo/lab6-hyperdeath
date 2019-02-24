@@ -4,7 +4,7 @@ using namespace std;
 LegoSet::LegoSet(int nu, string th, string na, int mi, int pi, double pr) {
 	number = nu;
 	theme = th;
-	na = name;
+	name = na;
 	minifigs = mi;
 	pieces = pi;
 	price = pr;
